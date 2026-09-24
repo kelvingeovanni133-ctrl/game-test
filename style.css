@@ -1,0 +1,254 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #080808;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+    image-rendering: pixelated;
+    touch-action: none;
+}
+
+#game {
+    position: relative;
+    width: min(900px, 100vw);
+    height: min(500px, 70vh);
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            #17133b 0%,
+            #27205b 65%,
+            #34265c 65%,
+            #34265c 100%
+        );
+
+    border: 6px solid white;
+    box-shadow: 0 0 0 5px black;
+}
+
+/* Estrelas */
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(
+            white 2px,
+            transparent 2px
+        );
+
+    background-size: 80px 70px;
+    opacity: .7;
+}
+
+/* Pontuação */
+
+#score {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    color: white;
+    font-size: clamp(16px, 4vw, 25px);
+
+    font-weight: bold;
+    z-index: 10;
+
+    text-shadow:
+        3px 3px #000;
+}
+
+/* Personagem */
+
+#player {
+    position: absolute;
+
+    width: 38px;
+    height: 38px;
+
+    left: 15%;
+
+    bottom: 65px;
+
+    background: #ffd21c;
+
+    border: 5px solid #000;
+
+    z-index: 5;
+
+    box-shadow:
+        5px 5px 0 #e88600;
+}
+
+#player::before,
+#player::after {
+    content: "";
+
+    position: absolute;
+
+    width: 7px;
+    height: 7px;
+
+    background: #000;
+
+    top: 7px;
+}
+
+#player::before {
+    left: 5px;
+}
+
+#player::after {
+    right: 5px;
+}
+
+/* Chão */
+
+.ground {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 65px;
+
+    background: #403263;
+
+    border-top: 7px solid #000;
+
+    z-index: 4;
+}
+
+/* Obstáculos */
+
+.obstacle {
+    position: absolute;
+
+    width: 36px;
+    height: 50px;
+
+    bottom: 65px;
+
+    background: #ff315c;
+
+    border: 5px solid #000;
+
+    box-shadow:
+        5px 0 #a51e3e;
+
+    z-index: 5;
+}
+
+/* Game Over */
+
+#gameOver {
+    position: absolute;
+
+    inset: 0;
+
+    display: none;
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background: rgba(0, 0, 0, .82);
+
+    color: white;
+
+    z-index: 20;
+
+    text-align: center;
+}
+
+#gameOver h1 {
+    font-size: clamp(30px, 9vw, 55px);
+
+    color: #ff315c;
+
+    text-shadow: 5px 5px #000;
+}
+
+#gameOver p {
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+/* Botão reiniciar */
+
+#restart {
+    margin-top: 20px;
+
+    padding: 14px 20px;
+
+    font-family: monospace;
+    font-weight: bold;
+
+    font-size: 16px;
+
+    background: #ffd21c;
+
+    border: 5px solid #000;
+
+    box-shadow: 5px 5px #555;
+}
+
+/* BOTÃO MOBILE */
+
+#jumpButton {
+    margin-top: 25px;
+
+    width: 130px;
+    height: 65px;
+
+    background: #ffd21c;
+
+    border: 6px solid #000;
+
+    box-shadow: 6px 6px #555;
+
+    font-family: monospace;
+    font-size: 20px;
+    font-weight: bold;
+
+    color: #000;
+
+    touch-action: manipulation;
+}
+
+#jumpButton:active {
+    transform: translate(5px, 5px);
+    box-shadow: 1px 1px #555;
+}
+
+/* Celulares */
+
+@media (max-height: 600px) {
+
+    #game {
+        height: 65vh;
+    }
+
+    #jumpButton {
+        margin-top: 12px;
+        height: 55px;
+    }
+
+}
